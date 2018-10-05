@@ -1,34 +1,45 @@
-// components/like/like-cmp.js
+// components/like/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    like: Boolean,
-    count: Number,
-    readOnly:Boolean
+    like:{
+      type:Boolean
+    },
+    count:{
+      type:Number
+    }
   },
 
+  /**
+   * 组件的初始数据
+   */
   data: {
-    yes_url: 'images/like.png',
-    no_url: 'images/like@dis.png'
+    yes_url:"./images/like.png",
+    no_url:"./images/like@dis.png"
   },
 
+  /**
+   * 组件的方法列表
+   */
   methods: {
-    onLike: function (event) {
-      if(this.properties.readOnly){
-        return
-      }
+    onLike:function(e){
+     
+      let like = this.properties.like
       let count = this.properties.count
-      count = this.properties.like ? count - 1 : count + 1
+
+      count = like ? count-1:count+1
       this.setData({
-        count: count,
-        like: !this.properties.like
+        count:count,
+        like:!like
       })
-      let behavior = this.properties.like ? 'like' : 'cancel'
-      this.triggerEvent('like', {
+
+      let behavior = this.properties.like? 'like':'cancel'
+      // 发起一个自定义事件
+      this.triggerEvent('like',{
         behavior: behavior
-      }, {})
+        },{})
     }
   }
 })

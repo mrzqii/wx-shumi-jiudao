@@ -1,36 +1,32 @@
-// components/book/normal/book-normal.js
+// components/book/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    book: Object,
-    showLike:{
-      type:Boolean,
-      value:true
-    }
+    book:Object
+
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    title:String,
-    author:String,
-    img:String
+
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onTap:function(event){
-      this.triggerEvent('booktap', {
-        bid:this.properties.book.id
-      }, {})
+    onTap(event){
+      const bid = this.properties.book.id
+      // 直接在组件里面跳转是非常方便的，但是一个弊端就是通用性降低了 所以就要权衡自己的项目和需求
       wx.navigateTo({
-        url: '../../pages/detail/detail?bid='+this.properties.book.id,
+        url: `/pages/book-detail/book-detail?bid=${bid}`,
       })
+       
     }
+
   }
 })

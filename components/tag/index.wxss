@@ -1,5 +1,4 @@
-/* components/tag/tag.wxss */
-
+/* components/tag/index.wxss */
 .container{
   padding:4rpx 12rpx; 
   background-color: #f5f5f5;

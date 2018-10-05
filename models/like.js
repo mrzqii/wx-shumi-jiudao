@@ -1,6 +1,6 @@
 import {
   HTTP
-} from '../utils/http.js'
+} from '../util/http.js'
 class LikeModel extends HTTP {
   constructor() {
     super()
@@ -22,14 +22,14 @@ class LikeModel extends HTTP {
     this.request(params)
   }
 
-  like(like_or_cancel, art_id, type) {
+  like(like_or_cancel, art_id, category) {
     let url = like_or_cancel === 'cancel' ? 'like/cancel' : 'like'
     this.request({
       url: url,
       method: 'POST',
       data: {
         art_id: art_id,
-        type: type
+        type: category
       },
       success: (data) => {
         console.log(data)

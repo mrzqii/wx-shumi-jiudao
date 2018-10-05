@@ -6,7 +6,7 @@
   flex-direction: column;
   width:240rpx;
   height:360rpx;
-  /* padding:0 90rpx 0 90rpx;  */
+
 }
 
 .description{

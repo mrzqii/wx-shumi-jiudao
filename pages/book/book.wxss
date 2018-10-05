@@ -18,12 +18,13 @@
   margin-top:10rpx;
   display: flex;
   flex-direction: row;
+  /* 这个属性的特点就是在一行里面放下最多子元素 */
   flex-wrap: wrap;
   padding: 0 90rpx 0 90rpx;
   justify-content: space-between;
 }
 
-.books-container book-cmp{
+.books-container v-book{
   margin-bottom: 30rpx;
 }
 

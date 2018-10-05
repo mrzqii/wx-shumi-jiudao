@@ -1,0 +1,30 @@
+.classic-img{
+  width:750rpx;
+  height:500rpx;
+ 
+  /* margin-bottom:120rpx; */
+}
+
+.tag{
+  width:46rpx;
+  height:142rpx;
+  /* 注意这个地方设置相对自身偏移为什么使用bottom和right */
+  position: relative;
+  bottom: 58rpx;
+  right:310rpx;
+}
+
+.content{
+  display:block;
+  /* width:275px; */
+  /* margin:0 auto; */
+  /* 当文字比较短的时候文字还是会居中的 */
+  max-width:550rpx;
+  font-size:36rpx;
+}
+
+.classic-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,11 +1,11 @@
 {
-  "usingComponents": {
-    "navi-cmp": "/components/navi/navi",
-    "epsoide-cmp": "/components/epsoide/epsoide",
-    "like-cmp": "/components/like/index",
-    "movie-cmp":"/components/classic/movie/movie",
-    "music-cmp": "/components/classic/music/music",
-    "essay-cmp": "/components/classic/essay/essay",
-    "img-btn-cmp": "/components/image-button/index"
+  "usingComponents":{
+    "v-like": "/components/like/index",
+    "v-movie": "/components/classic/movie/index",
+    "v-music": "/components/classic/music/index",
+    "v-essay": "/components/classic/essay/index",
+    "v-epsoide":"/components/epsoide/index",
+    "v-navi":"/components/navi/index"
+
   }
 }

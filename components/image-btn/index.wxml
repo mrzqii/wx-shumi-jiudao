@@ -1,0 +1,3 @@
+<button open-type="{{opentype}}" bind:tap="onLike">
+  
+</button>

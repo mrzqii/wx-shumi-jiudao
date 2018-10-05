@@ -6,7 +6,8 @@
     "pages/detail/detail",
     "pages/classic-detail/index",
     "pages/about/about",
-    "pages/course/course"
+    "pages/course/course",
+    "pages/book-detail/book-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

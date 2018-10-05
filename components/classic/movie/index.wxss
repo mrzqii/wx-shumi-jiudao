@@ -1,0 +1,2 @@
+@import "../common.wxss"
+/* 这里体现了如何在组件中复用wxss组件 */

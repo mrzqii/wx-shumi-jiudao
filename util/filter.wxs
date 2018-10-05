@@ -1,0 +1,22 @@
+
+// 这个是小程序的模块 和 ES6的模块是不一样的
+
+// const 是JS ES6 语法 wxs 不是javascript哦，他们只是在语法形式上相似,一般按照ES5写没啥问题
+// const format = function(text){    报错
+var format = function(text){
+  // 当text是book.summary的时候，初始值是null，当接口返回数据设置setData以后才是正确的。这里会
+  // 运行两次这个函数，所以需要把第一次过滤了
+  if(!text){
+    return
+  }
+  var reg = getRegExp('\\\\n','g')
+  return text.replace(reg,'\n&nbsp;&nbsp;')
+}
+
+var limit = function(arr,length){
+  return arr.slice(0, length)
+}
+module.exports  = { 
+  format:format,
+  limit:limit
+  }
