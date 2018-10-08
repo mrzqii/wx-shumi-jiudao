@@ -1,57 +1,48 @@
-import {
-  HTTP
-} from '../../utils/http.js'
-
-let paginationBev = Behavior({
-  properties: {
-   
+const paginationBev = Behavior({
+  data:{
+    dataArray:[],
+    total: null,
+    noneResult:false
   },
-  data: {
-    start: 0,
-    count: 20,
-    dataArray: [],
-    empty:false,
-    ending:false
-  },
-
-  methods: {
-    setMoreData: function(dataArray) {
-      if (dataArray==false) {
-        this.data.ending = true
-        if(this.data.dataArray==false){
-          this.setData({
-            empty:true
-          })
-        }
+  methods:{
+    // 新添加的数据
+    setMoreData(dataArray){
+      const temArray = this.data.dataArray.concat(dataArray)
+      this.setData({
+        dataArray: temArray
+      })
+    },
+    getCurrentStart(){
+      return this.data.dataArray.length
+    },
+    setTotal(total){
+      this.data.total = total
+      if(total===0){
+        this.setData({
+          noneResult:true
+        })
       }
-      let temp =this.data.dataArray.concat(dataArray)
-      this.data.start += this.data.count
+    },
+    // 是否还有更多的数据需要加载
+    hasMore(){
+      if (this.data.dataArray.length >= this.data.total) {
+        return false
+      }else{
+        return true
+      }
+
+    },
+    initialize(){
       this.setData({
-        dataArray: temp
+        dataArray :[],
+        noneResult:false
+
       })
-      return true
-    },
-
-    hasMore:function(){
-      return !this.data.ending
-    },
-
-    getCurrentStart:function(){
-      return this.data.start
-    },
-
-    initPagination:function(){
-      this.data.ending = false
-      this.data.start = 0
+      // 如果这样设置不会触发DOM更新
       this.data.dataArray = []
-      this.setData({
-        dataArray:[]
-      })
+      this.data.total = null
     }
   }
 })
 
-
-export {
-  paginationBev
-}
+export { paginationBev }

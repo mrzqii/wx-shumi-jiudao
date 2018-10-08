@@ -1,4 +1,4 @@
-// components/mask/mask.js
+// components/mask/index.js
 Component({
   /**
    * 组件的属性列表

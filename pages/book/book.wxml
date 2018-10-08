@@ -1,22 +1,22 @@
 <view>
-<view wx:if="{{!searchPanel}}" class="container">
-   <view class="header">
-     <view class='box' bind:tap="onActivateSearch">
-      <image src="/images/icon/search.png" />
-      <text>搜索书籍</text>
+  <view wx:if="{{!searching}}" class="container">
+    <view class="header">
+      <view class='box' bind:tap="onSearching">
+        <image src="/images/icon/search.png" />
+        <text>搜索书籍</text>
+      </view> 
     </view> 
-  </view> 
-   <view class="sub-container">
-    <image class="head-img" src="/images/book/quality.png" />
-    <view class="books-container">
-    <!-- 为列表里面的每一个元素增加唯一的标识，提高性能 -->
-    <!-- 不需要这样写wx:key="{{item.id}}" -->
-    <!-- 如果需要被遍历的对象里面的元素是数字或者字符串的话，可以wx:key="{{*this}}" -->
-      <block wx:for="{{books}}" wx:key="{{id}}">
-        <v-book book="{{item}}" />
-      </block>
-    </view>
-  </view> 
-</view>
-  <!-- <search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />   -->
+    <view class="sub-container">
+      <image class="head-img" src="/images/book/quality.png" />
+      <view class="books-container">
+      <!-- 为列表里面的每一个元素增加唯一的标识，提高性能 -->
+      <!-- 不需要这样写wx:key="{{item.id}}" -->
+      <!-- 如果需要被遍历的对象里面的元素是数字或者字符串的话，可以wx:key="{{*this}}" -->
+        <block wx:for="{{books}}" wx:key="{{id}}">
+          <v-book book="{{item}}" />
+        </block>
+      </view>
+    </view> 
+  </view>
+  <v-search more="{{more}}" wx:if="{{searching}}" bind:cancel="onCancel" />  
 </view>

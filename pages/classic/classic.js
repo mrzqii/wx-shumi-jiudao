@@ -31,7 +31,7 @@ Page({
       })
     })
   },
-
+ 
   onPrevious: function (event) {
     this._updateClassic('previous')
   },

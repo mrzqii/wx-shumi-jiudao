@@ -1,28 +1,41 @@
+import { HTTP } from '../util/http-p.js'
 
-class KeywordStorage{
-  constructor(){
-    this.key = 'q'
+class KeywordModel extends HTTP {
+  key = 'q'
+  maxLength = 10
+
+  // 获取所有历史搜索的关键字
+  getHistory() {
+    const words = wx.getStorageSync(this.key)
+    if(!words) {
+      return []
+    }
+    return words
   }
 
-  all(){
-    var keywords = wx.getStorageSync(this.key)
-    return keywords
+  getHot() {
+    return this.request({
+      url: './book/hot_keyword'
+    })
   }
 
-  add(word){
-    var keywords = this.all()
-    if (keywords){
-      var index = keywords.indexOf(word)
-      if(index == -1){
-        keywords = keywords.push(word)
+  addToHistory(keyword) {
+    let words = this.getHistory()
+    // ES6语法
+    const has = words.includes(keyword)
+    // 如果缓存是有这个关键词的话就不做处理
+    if(!has) {
+      const length = words.length
+      if(length >= this.maxLength){
+        words.pop()
       }
-      wx.setStorageSync(this.key, keywords)
+      words.unshift(keyword)
+      wx.setStorageSync(this.key, words)
+
     }
-    else{
-      keywords = [word]
-      wx.setStorageSync(this.key, keywords)
-    }
+     
   }
+
 }
 
-export { KeywordStorage}
+export { KeywordModel}

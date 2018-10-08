@@ -8,6 +8,7 @@
     "pages/about/about",
     "pages/course/course",
     "pages/book-detail/book-detail"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,10 +10,10 @@
   </view>
   <view class="sub-container">
     <text class="headline">短评</text>
-    <text class="shadow" wx:if="{{noComment}}">还没有短评</text>
+    <text class="shadow" wx:if="{{comment==false}}">还没有短评</text>
     <view class="comment-container">
-      <!-- <block wx:for="{{util.limit(comments,15)}}"> -->
-      <block wx:for="{{util.limit(comments,3)}}" wx:key="">
+      <!-- 通过使用wxs来实现过滤器的效果 -->
+      <block wx:for="{{util.limit(comments,8)}}" wx:key="">
       <!-- 这里使用了externalClasses的方式来改变组件样式 -->
       <!-- 这里还使用了wxs的语法 -->
         <v-tag class="tag" tag-class="{{util2.changeClass(index)}}" text="{{item.content}}">
@@ -56,27 +56,27 @@
     <text>输入短评</text>
   </view>
    <view class="like-container">
-      <like-cmp bind:like="onLike" class="like" like="{{like}}" count="{{count}}" />
+      <v-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}" />
       <img-btn-cmp class="share-btn" open-type="share">
         <image class="share" slot="img" src="/images/icon/share.png" />
       </img-btn-cmp>
     </view>
 </view>
-
-<mask-cmp wx:if="{{posting}}" />
+<!-- 遮罩 -->
+<v-mask wx:if="{{posting}}" />
 
 <view wx:if="{{posting}}" class="posting-container">
   <view class="post-header">
-    <text wx:if="{{!(comments==false)}}">仅可点击标签+1</text>
+    <text wx:if="{{comments==true}}">仅可点击标签+1</text>
     <text wx:else>暂无短评</text>
     <text class="cancel" bind:tap="onCancel">取消</text>
   </view>
   <view class="comment-container">
-    <!-- <block wx:for="{{util.limit(comments, 3)}}"> -->
-    <block wx:for="comments">
-      <!-- <v-tag bind:tapping="onPost" tag-class="tag" text="{{item.content}}">
+    <block wx:for="{{util.limit(comments, 3)}}">
+  
+      <v-tag bind:tapping="onPost" tag-class="{{util2.changeClass(index)}}" text="{{item.content}}">
         <text class="num" slot="after">{{'+' + item.nums}}</text>
-      </v-tag> -->
+      </v-tag>
     </block>
   </view>
   <input focus="{{posting}}" confirm-type="发送" class="post" placeholder='短评最多12个字' bindconfirm="onPost"></input>
