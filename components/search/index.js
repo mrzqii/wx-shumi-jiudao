@@ -151,6 +151,7 @@ Component({
     _closeResult(){
       this.setData({
         searching: false,
+        // 点击×把搜索框的值置空
         q:''
       })
     }

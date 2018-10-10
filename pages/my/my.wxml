@@ -1,2 +1,35 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <!-- 这个是快速显示用户信息的组件。我们用另一种方式来实现 -->
+  <!-- <open-data type="userAvatarUrl" class="avatar"></open-data> -->
+
+  <!-- 这里的open-type是我们自己定义的属性，可以设置任意名字 -->
+  <!-- 这里的bind:getuserinfo 是子组件派发出来的 -->
+  <v-button wx:if="{{!authorized}}" open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
+     <image slot="img" class="avatar" src="/images/my/my.png" /> 
+  </v-button>
+  <view wx:if="{{authorized}}"  class="avatar-container avatar-position">
+    <image src="{{userInfo.avatarUrl}}" class="avatar" />
+    <text>{{userInfo.nickName}}</text>
+    <!-- <open-data wx:if="{{hasUserInfo}}" type="userNickName"></open-data> -->
+  </view>
+  <view class="about-container">
+    <view bind:tap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于我</text>
+    </view>
+    <view class="about-us">
+      <text class="book-num">{{bookCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
+  <view class="like-container">
+    <image class=".headline" src="/images/my/like.png" />
+    <view class="preview-container">
+      <block wx:for="{{classics}}">
+        <v-preview bind:tap="onPreviewTap" class="preview" classic="{{item}}" />
+      </block>
+    </view>
+  </view>
+</view>
+

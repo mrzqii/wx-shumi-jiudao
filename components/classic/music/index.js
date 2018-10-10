@@ -24,6 +24,7 @@ Component({
   },
 
   attached: function() {
+    console.log('11')
     this._recoverPlaying()
     this._monitorSwitch()
   },
@@ -37,8 +38,10 @@ Component({
    */
   methods: {
     onPlay: function(event) {
+      
       // 判断当前是否是播放状态
       if (!this.data.playing) {
+        console.log(1)
         this.setData({
           playing: true,
         })
@@ -46,10 +49,12 @@ Component({
           mMgr.play()
         }
         else{
+          // 当设置了新的 src 时，会自动开始播放,默认为空字符串
           mMgr.src = this.properties.src
         }
         mMgr.title = this.properties.title
       } else {
+        console.log(2)
         this.setData({
           playing: false,
         })
@@ -65,6 +70,7 @@ Component({
         return
       }
       if (mMgr.src == this.properties.src) {
+        console.log('aaa:'+mMgr.src)
         if (!mMgr.paused) {
           this.setData({
             playing: true

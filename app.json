@@ -3,10 +3,7 @@
     "pages/classic/classic",
     "pages/book/book",
     "pages/my/my",
-    "pages/detail/detail",
-    "pages/classic-detail/index",
     "pages/about/about",
-    "pages/course/course",
     "pages/book-detail/book-detail"
    
   ],
@@ -17,6 +14,9 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "default"
   },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "tabBar": {
     "borderStyle": "black",
     "selectedColor": "#000000",

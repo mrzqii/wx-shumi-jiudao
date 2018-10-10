@@ -46,6 +46,7 @@ Page({
   },
   _updateClassic:function(nextOrPrevious){
     let index = this.data.classic.index
+    console.log('aa::',index)
     classicModel.getClassic(index, nextOrPrevious, (data) => {
       // if (data) {
         this._getLikeStatus(data.id, data.type)
@@ -69,8 +70,4 @@ Page({
       })
     })
   },
-
-  onShareAppMessage() {
-
-  }
 })

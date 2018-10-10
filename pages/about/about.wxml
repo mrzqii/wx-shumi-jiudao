@@ -1,2 +1,5 @@
-<!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<image class="about"  />
+<!-- 关联其他小程序 -->
+<!-- <navigator class='nav' target="miniProgram" app-id="wx8fsfsaf" open-type='navigate'>
+  <image class='vendor' src='/images/my/vendor.png'></image>
+</navigator> -->

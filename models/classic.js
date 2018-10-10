@@ -2,12 +2,11 @@ import { HTTP } from '../util/http.js'
 // import { ClassicStorage } from '../models/classic-storage.js'
 
 class ClassicModel extends HTTP {
-  // prefix = 'classic'
-
   constructor() {
     super()
+    // 注意这个必须在super的下面
+    this.prefix = 'classic'
   }
-
   getLatest(sCallback) {
     this.request({
       url: 'classic/latest',
@@ -21,13 +20,13 @@ class ClassicModel extends HTTP {
     })
   }
 
-  getPrevious(index, sCallback) {
-    this._getClassic(index, 'previous', sCallback)
-  }
+  // getPrevious(index, sCallback) {
+  //   this._getClassic(index, 'previous', sCallback)
+  // }
 
-  getNext(index, sCallback) {
-    this._getClassic(index, 'next', sCallback)
-  }
+  // getNext(index, sCallback) {
+  //   this._getClassic(index, 'next', sCallback)
+  // }
 
 //   getById(cid, type, success) {
 //     let params = {
@@ -55,13 +54,13 @@ class ClassicModel extends HTTP {
     else return false
   }
 
-//   getMyFavor(success) {
-//     let params = {
-//       url: 'classic/favor',
-//       success: success
-//     }
-//     this.request(params)
-//   }
+  getMyFavor(success) {
+    let params = {
+      url: 'classic/favor',
+      success: success
+    }
+    this.request(params)
+  }
 
   getClassic(index, next_or_previous, sCallback) {
     let key = next_or_previous == 'next' ? this._getKey(index + 1) :

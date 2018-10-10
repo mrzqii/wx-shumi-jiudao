@@ -19,9 +19,25 @@
   margin-top: 4rpx
 }
 .like{
-  margin-top: 6rpx;
+  margin-top:12rpx;
 }
 .navi{
   position: absolute;
   bottom: 40rpx;
+}
+.share-btn{
+  margin-top:20rpx;
+  margin-left:10rpx;
+}
+
+.share{
+  width:40rpx;
+  height:40rpx;
+}
+.like-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right:30rpx;
 }
